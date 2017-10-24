@@ -35,30 +35,32 @@ public:
 };
 student::student()//анхдагч байгуулагч: нэр, дугаарт санах ой нөөцөлж хоосон утга онооно, курсэд 1 гэсэн утга онооно.
 {
-    int year = 1;
-    double GPA = 0;
-    char* name="";
-    char* id="";
+    this->year = 1;
+    this->GPA = 0;
+    this->name="";//can't appoint value for pointer
+    this->sisiId="";
 }
 student::student(char *n, char *id, int year_)  //параметертэй байгуулагч: 3 гишүүн өгөгдөлд параметерээр утга авч онооно
 {
-    name = new char(sizeof(n)+1);
-    sisiId = new char(sizeof(id)+1);
-    this->sisiId = id;
-    this->name = n;
-    this->year = year_;
+    name = new char[strlen(n)+1];
+    sisiId = new char[strlen(id)+1];
+    this-> sisiId = id;
+    this-> name = n;
+    this-> year = year_;
 }
 void student::set_name(char *n)
 {
     if(name!=NULL)
         delete []name;
-    name = new char(sizeof(n)+1);
-    this->name = n;
+    name = new char[strlen(n)+1];
+    this-> name = n;
 }
 void student::set_sisiId(char *id)
 {
-    sisiId = new char(sizeof(id)+1);
-    this->sisiId = id;
+    if(sisiId!=NULL)
+        delete []sisiId;
+    sisiId = new char[strlen(id)+1];
+    this-> sisiId = id;
 }
 void student::set_year(int a)
 {
@@ -87,9 +89,9 @@ double student::get_gpa()
 
 void student::copy_(student &s) //хуулагч байгуулагч: өөр объектийг хуулж үүснэ. ингэхдээ хаяган хувьсагч дээр гардаг асуудлыг бодолцох хэрэгтэй
 {
-    name = new char(sizeof(s.get_name()+1));
+    name = new char[strlen(s.get_name()+1)];
+    sisiId = new char[strlen(s.get_sisiId()+1)];
     this->name = s.get_name();
-    sisiId = new char(sizeof(s.get_sisiId()+1));
     this->sisiId = s.get_sisiId();
     this->year = s.get_year();
     this->GPA = s.get_gpa();
@@ -154,7 +156,7 @@ void printall(student s[], int n)
 {
     for(int i=0; i<n; i++)
     {
-        cout << i << " " << s[i].get_name() << " " << s[i].get_sisiId() << " " << s[i].get_year() << " " << s[i].get_gpa() << endl;
+        cout << i+1 << ":\t" << s[i].get_name() << "\t" << s[i].get_sisiId() << "\t" << s[i].get_year() << "\t" << s[i].get_gpa() << endl;
 
     }
     cout << endl << endl << endl;
