@@ -92,10 +92,8 @@ double student::get_gpa()
 
 void student::copy_(student &s) //хуулагч байгуулагч: өөр объектийг хуулж үүснэ. ингэхдээ хаяган хувьсагч дээр гардаг асуудлыг бодолцох хэрэгтэй
 {
-    name = new char[strlen(s.get_name()+1)];
-    sisiId = new char[strlen(s.get_sisiId()+1)];
-    strcpy(name,s.get_name());
-    strcpy(sisiId,s.get_sisiId());
+    set_name(s.get_name());
+    set_sisiId(s.get_sisiId());
     this->year = s.get_year();
     this->GPA = s.get_gpa();
 }
