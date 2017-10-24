@@ -44,29 +44,29 @@ student::student(char *n, char *id, int year_)  //параметертэй ба�
 {
     name = new char(sizeof(n)+1);
     sisiId = new char(sizeof(id)+1);
-    this -> sisiId = id;
-    this -> name = n;
-    this -> year = year_;
+    this->sisiId = id;
+    this->name = n;
+    this->year = year_;
 }
 void student::set_name(char *n)
 {
     if(name!=NULL)
         delete []name;
     name = new char(sizeof(n)+1);
-    this -> name = n;
+    this->name = n;
 }
 void student::set_sisiId(char *id)
 {
     sisiId = new char(sizeof(id)+1);
-    this -> sisiId = id;
+    this->sisiId = id;
 }
 void student::set_year(int a)
 {
-    this ->year = a;
+    this->year = a;
 }
 void student::set_gpa(double a)
 {
-    this ->GPA = a;
+    this->GPA = a;
 }
 char* student::get_name()
 {
@@ -88,11 +88,11 @@ double student::get_gpa()
 void student::copy_(student &s) //хуулагч байгуулагч: өөр объектийг хуулж үүснэ. ингэхдээ хаяган хувьсагч дээр гардаг асуудлыг бодолцох хэрэгтэй
 {
     name = new char(sizeof(s.get_name()+1));
-    this ->name = s.get_name();
+    this->name = s.get_name();
     sisiId = new char(sizeof(s.get_sisiId()+1));
-    this ->sisiId = s.get_sisiId();
-    this ->year = s.get_year();
-    this ->GPA = s.get_gpa();
+    this->sisiId = s.get_sisiId();
+    this->year = s.get_year();
+    this->GPA = s.get_gpa();
 }
 
 bool student::greatThan(student &s)
@@ -154,7 +154,7 @@ void printall(student s[], int n)
 {
     for(int i=0; i<n; i++)
     {
-        cout << i << ":\t" << s[i].get_name() << "\t" << s[i].get_sisiId() << "\t" << s[i].get_year() << "\t" << s[i].get_gpa() << endl;
+        cout << i << " " << s[i].get_name() << " " << s[i].get_sisiId() << " " << s[i].get_year() << " " << s[i].get_gpa() << endl;
 
     }
     cout << endl << endl << endl;
