@@ -35,32 +35,35 @@ public:
 };
 student::student()//анхдагч байгуулагч: нэр, дугаарт санах ой нөөцөлж хоосон утга онооно, курсэд 1 гэсэн утга онооно.
 {
-    this->year = 1;
-    this->GPA = 0;
-    this->name="";
-    this->sisiId="";
+
+    set_name("");
+    set_sisiId("");
+    set_year(1);
+    set_gpa(0);
+
 }
 student::student(char *n, char *id, int year_)  //параметертэй байгуулагч: 3 гишүүн өгөгдөлд параметерээр утга авч онооно
 {
     name = new char[strlen(n)+1];
     sisiId = new char[strlen(id)+1];
-    this-> sisiId = id;
-    this-> name = n;
-    this-> year = year_;
+    set_name(n);
+    set_sisiId(id);
+    set_year(year_);
+
 }
 void student::set_name(char *n)
 {
     if(name!=NULL)
         delete []name;
     name = new char[strlen(n)+1];
-    this-> name = n;
+    strcpy(name,n);//strcmp
 }
 void student::set_sisiId(char *id)
 {
     if(sisiId!=NULL)
         delete []sisiId;
     sisiId = new char[strlen(id)+1];
-    this-> sisiId = id;
+    strcpy(sisiId,id);
 }
 void student::set_year(int a)
 {
@@ -91,8 +94,8 @@ void student::copy_(student &s) //хуулагч байгуулагч: өөр о
 {
     name = new char[strlen(s.get_name()+1)];
     sisiId = new char[strlen(s.get_sisiId()+1)];
-    this->name = s.get_name();
-    this->sisiId = s.get_sisiId();
+    strcpy(name,s.get_name());
+    strcpy(sisiId,s.get_sisiId());
     this->year = s.get_year();
     this->GPA = s.get_gpa();
 }
