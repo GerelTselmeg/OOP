@@ -37,7 +37,7 @@ student::student()//анхдагч байгуулагч: нэр, дугаарт 
 {
     this->year = 1;
     this->GPA = 0;
-    this->name="";//can't appoint value for pointer
+    this->name="";
     this->sisiId="";
 }
 student::student(char *n, char *id, int year_)  //параметертэй байгуулагч: 3 гишүүн өгөгдөлд параметерээр утга авч онооно
